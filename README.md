@@ -43,9 +43,9 @@ Dann folgen zeilenweise Informationen über die gemappten Reads. Jede Zeile muss
 | 6      | CIGAR    | *            | CIGAR-String des Alignments                                |
 | 7      | RNEXT    | *            | Referenz, auf die der nächste Readteil mappt               |
 | 8      | PNEXT    | 0            | Position des nächsten Readteils                            |
-| 9      | TLEN     | 0            | Insert-Länge                                |
+| 9      | TLEN     | 0            | Insert-Länge                                               |
 | 10     | SEQ      | *            | Readsequenz                                                |
-| 11     | QUAL     | *            | Mapping-Qualität                                           |
+| 11     | QUAL     | *            | Basen-Qualität der Reads (wie in FASTQ-Datei)              |
 
 Um eine sinnvolle Visualisierung zu ermöglichen, geben wir in den Spalten QNAME, FLAG, RNAME, POS, CIGAR und SEQ Informationen an. 
 
@@ -140,7 +140,7 @@ Enthält aber einer der Reads einen Fehler (in diesem Fall wird die 3. Base von 
 
 Es kommen durch den Fehler drei neue k-mere hinzu, die jeweils nur ein Mal auftreten.
 
-Anhang dieser Information kann eine Korrektur erfolgen: Es wird ein Schwellenwert definiert, ab dem ein k-mer als potenziell fehelrhaft eingestuft wird. Für jedes k-mer, welches seltener als dieser Schwellenwert vorkommt, werden folgende Schritte durchlaufen:
+Anhand dieser Information kann eine Korrektur erfolgen: Es wird ein Schwellenwert definiert, ab dem ein k-mer als potenziell fehelrhaft eingestuft wird. Für jedes k-mer, welches seltener als dieser Schwellenwert vorkommt, werden folgende Schritte durchlaufen:
 
 * Für jede Base X aus dem k-mer:
     * Für jede mögliche Base Y (A, G, T und C):
