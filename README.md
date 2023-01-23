@@ -8,7 +8,7 @@ Sie finden zu diesem Zweck in dem repository bereits die Musterlösung für die 
 
 Zunächst aber die für Sie vermutlich besonders interessante Information, wo Sie Ihre Punkte herbekommen. Neben der Implementation gibt es Punkte für:
 
-* Die Tablet-Aufgabe beim SAM-Export: Für die Identifikation der korrekten zwei Basenaustausche in dem Mapping gibt es 5 Punkte.
+* Die Tablet-Aufgabe beim SAM-Export: Für die Identifikation der korrekten vier Basenaustausche in dem Mapping gibt es 5 Punkte.
 * Für die erste Antibiotika-Empfehlung gibt es 10 Punkte (2.5 pro Person)
 * Für die zweite Antibiotika-Empfehlung gibt es 10 Punkte (2.5 pro Person)
 * Für die Erklärung der Unterschiede gibt es 10 Punkte
@@ -92,6 +92,8 @@ Tragen Sie hier bitte in dem Format ```<Referenz-Base><Position><Neue Base>``` e
 ```text
 Mutation 1:
 Mutation 2:
+Mutation 3:
+Mutation 4:
 ```
 
 ## Antibiotika-Resistenzen
