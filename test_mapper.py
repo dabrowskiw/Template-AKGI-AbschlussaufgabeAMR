@@ -1,10 +1,19 @@
 from unittest import TestCase
 import pytest
+import os, shutil, tempfile
 
-from mapper import Read, Reference, Mapping, read_fasta
+from mapper import Read, Reference, Mapping, read_fasta, SAMWriter, ReadPolisher
 
 
 class MapperTestCase(TestCase):
+    def setUp(self):
+        # Create a temporary directory
+        self.test_dir = tempfile.mkdtemp()
+
+    def tearDown(self):
+        # Remove the directory after the test
+        shutil.rmtree(self.test_dir)
+
     @pytest.mark.read
     def test_read_constructor(self):
         read = Read([">Read_0", "AGTCGTAG", "TTCAGCCT", "CGTTAGCT", "AGGCAATG"])
@@ -74,3 +83,39 @@ class MapperTestCase(TestCase):
         mapping.add_read(read2, 5)
         self.assertEqual([read1, read2], mapping.get_reads_at_position(5))
 
+    @pytest.mark.samwriter
+    def test_writer(self):
+        ref = Reference([">ref", "AGTCCTGATTAGCGGTTAGCGAAT"])
+        read1 = Read([">read_1", "CCTGAT"])
+        read2 = Read([">read_2", "TAGCGGT"])
+        mapping = Mapping(ref)
+        mapping.add_read(read1, 5)
+        mapping.add_read(read2, 9)
+        w = SAMWriter(mapping)
+        outname = os.path.join(self.test_dir, "out.sam")
+        w.write_mapping(outname)
+        with open(outname, "r") as f:
+            lines = []
+            for line in f.readlines():
+                lines += [line.strip()]
+        assert lines[0].strip()=="@SQ\tSN:ref\tLN:24"
+        assert "read_1\t0\tref\t6\t255\t6M\t*\t0\t0\tCCTGAT\t*" in lines
+        assert "read_2\t0\tref\t10\t255\t7M\t*\t0\t0\tTAGCGGT\t*" in lines
+        assert len([x for x in lines if len(x) != 0]) == 3
+
+    @pytest.mark.polisher
+    def test_replacements(self):
+        p = ReadPolisher(3)
+        p.add_read("AGTCG")
+        p.add_read("AGTCG")
+        p.add_read("ACTCG")
+        rep = p.get_replacements(3)
+        assert rep == {}
+        rep = p.get_replacements(2)
+        assert rep == {'CTC': 'GTC', 'ACT': 'AGT'}
+
+    @pytest.mark.polisher
+    def test_replace(self):
+        r = Read([">r1", "ACTCG"])
+        r.replace_kmers({'CTC': 'GTC', 'ACT': 'AGT'})
+        assert r.get_seed(3) == "AGT"
