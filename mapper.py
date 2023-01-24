@@ -122,7 +122,7 @@ def main():
     reads = read_fasta("data/fluA_reads.fasta", Read.__name__)
     reference = read_fasta("data/fluA.fasta", Reference.__name__)[0]
     mapping = map_reads(reads, reference, 8, 5)
-    print("Mapping reads: " + len(mapping.reads))
+    print("Mapping reads: ", len(mapping.reads))
 
 
 if __name__ == "__main__":

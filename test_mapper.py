@@ -85,7 +85,7 @@ class MapperTestCase(TestCase):
 
     @pytest.mark.samwriter
     def test_writer(self):
-        ref = Reference([">ref", "AGTCCTGATTAGCGGTTAGCGAAT"])
+        ref = Reference([">ref additional reference information", "AGTCCTGATTAGCGGTTAGCGAAT"])
         read1 = Read([">read_1", "CCTGAT"])
         read2 = Read([">read_2", "TAGCGGT"])
         mapping = Mapping(ref)

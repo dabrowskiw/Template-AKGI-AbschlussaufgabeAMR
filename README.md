@@ -8,7 +8,7 @@ Sie finden zu diesem Zweck in dem repository bereits die Musterlösung für die 
 
 Zunächst aber die für Sie vermutlich besonders interessante Information, wo Sie Ihre Punkte herbekommen. Neben der Implementation gibt es Punkte für:
 
-* Die Tablet-Aufgabe beim SAM-Export: Für die Identifikation der korrekten vier Basenaustausche in dem Mapping gibt es 5 Punkte.
+* Die Tablet-Aufgabe beim SAM-Export: Für die Identifikation der korrekten zwei Basenaustausche in dem Mapping gibt es 5 Punkte.
 * Für die erste Antibiotika-Empfehlung gibt es 10 Punkte (2.5 pro Person)
 * Für die zweite Antibiotika-Empfehlung gibt es 10 Punkte (2.5 pro Person)
 * Für die Erklärung der Unterschiede gibt es 10 Punkte
@@ -92,8 +92,6 @@ Tragen Sie hier bitte in dem Format ```<Referenz-Base><Position><Neue Base>``` e
 ```text
 Mutation 1:
 Mutation 2:
-Mutation 3:
-Mutation 4:
 ```
 
 ## Antibiotika-Resistenzen
@@ -147,7 +145,7 @@ Anhand dieser Information kann eine Korrektur erfolgen: Es wird ein Schwellenwer
 * Für jede Base X aus dem k-mer:
     * Für jede mögliche Base Y (A, G, T und C):
         * Generiere ein Kandidaten-k-mer indem die Base X durch die Base Y ersetzt wird
-        * Falls das Kandidaten-k-mer auch im Datensatz vorkommt und zwar häufiger als der Schwellenwert: Merke es als mögliche Korrektur
+        * Falls das Kandidaten-k-mer auch im Datensatz vorkommt und zwar <ins>mindestens so häufig</ins> wie der Schwellenwert: Merke es als mögliche Korrektur
 * Falls Kandidaten-k-mere gefunden wurden: Ersetze das k-mer durch das Kandidaten-k-mer welches am häufigsten im Datensatz vorkommt (bei zwei Kandidaten-k-meren mit der gleichen Häufigkeit wähle zufällig eins davon)
 
 Für das Mapping müssen die so identifizierten korrigierbaren k-mere in allen Reads ersetzt werden, in denen sie vorkommen.
