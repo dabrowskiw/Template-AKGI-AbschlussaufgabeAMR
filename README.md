@@ -69,9 +69,9 @@ Implementieren Sie mit diesem Wissen eine Klasse ```SAMWriter``` mit den folgend
 
 ### Visualisierung mittels Tablet
 
-Mappen Sie nun die Datei [data/fluA_reads.fasta](data/fluA_reads.fasta) auf [data/fluA_reads.fasta](data/fluA.fasta) und speichern Sie das Ergebnis als fluA_mapping.sam. 
+Mappen Sie nun die Datei [data/fluA_reads.fasta](data/fluA_reads.fasta) auf [data/fluA.fasta](data/fluA.fasta) und speichern Sie das Ergebnis als fluA_mapping.sam. 
 
-Laden Sie dann das Programm [Tablet](https://ics.hutton.ac.uk/tablet/) herunter und öffnen Sie (Klick auf den Button "Open Assembly" oben links) die Dateien fluA_mapping.sam sowie die Referenz [data/fluA_reads.fasta](data/fluA.fasta). Sie müssten dann eine Ansicht erhalten wie in diesem Bild:
+Laden Sie dann das Programm [Tablet](https://ics.hutton.ac.uk/tablet/) herunter und öffnen Sie (Klick auf den Button "Open Assembly" oben links) die Dateien fluA_mapping.sam sowie die Referenz [data/fluA.fasta](data/fluA.fasta). Sie müssten dann eine Ansicht erhalten wie in diesem Bild:
 
 ![t1](Bilder/Tablet1.png)
 
